@@ -29,5 +29,6 @@ setup(
     classifiers         = ['Development Status :: 3 - Alpha'],
     ext_package         = 'rgbmatrix',
     ext_modules         = [core_ext, graphics_ext],
-    packages            = ['rgbmatrix']
+    packages            = ['rgbmatrix'],
+    language            = 'c++',
 )

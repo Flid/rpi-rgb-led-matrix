@@ -5,6 +5,7 @@ from libc.stdint cimport uint8_t, uint32_t
 ### External classes ###
 ########################
 
+
 cdef extern from "canvas.h" namespace "rgb_matrix":
     cdef cppclass Canvas:
         int width()
@@ -12,6 +13,14 @@ cdef extern from "canvas.h" namespace "rgb_matrix":
         void SetPixel(int, int, uint8_t, uint8_t, uint8_t)
         void Clear()
         void Fill(uint8_t, uint8_t, uint8_t)
+        
+    cdef cppclass CanvasTransformer:
+        CanvasTransformer() except +
+
+cdef extern from "transformer.h" namespace "rgb_matrix":
+    cdef cppclass RotateTransformer(CanvasTransformer):
+        RotateTransformer(int) except +
+        RotateTransformer() except +
 
 cdef extern from "gpio.h" namespace "rgb_matrix":
     cdef cppclass GPIO:
@@ -24,6 +33,7 @@ cdef extern from "gpio.h" namespace "rgb_matrix":
         void Write(uint32_t)
 
 cdef extern from "led-matrix.h" namespace "rgb_matrix":
+        
     cdef cppclass RGBMatrix(Canvas):
         RGBMatrix(GPIO*, int, int, int) except +
         void SetGPIO(GPIO*)
@@ -35,10 +45,13 @@ cdef extern from "led-matrix.h" namespace "rgb_matrix":
         uint8_t brightness()
         FrameCanvas *CreateFrameCanvas()
         FrameCanvas *SwapOnVSync(FrameCanvas*)
+        void ApplyStaticTransformer(const RotateTransformer&)
+        void ApplyStaticRotation(int degree)
 
     cdef cppclass FrameCanvas(Canvas):
         bool SetPWMBits(uint8_t)
         uint8_t pwmbits()
+    
 
 cdef extern from "graphics.h" namespace "rgb_matrix":
     cdef struct Color:
@@ -58,3 +71,7 @@ cdef extern from "graphics.h" namespace "rgb_matrix":
     cdef int DrawText(Canvas*, const Font, int, int, const Color, const char*)
     cdef void DrawCircle(Canvas*, int, int, int, const Color)
     cdef void DrawLine(Canvas*, int, int, int, int, const Color)
+
+    
+cdef extern from "utils.h" namespace "rgb_matrix":
+    cdef void apply_static_rotation(RGBMatrix* mattr, int degree);

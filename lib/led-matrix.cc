@@ -186,6 +186,7 @@ RGBMatrix::RGBMatrix(GPIO *io, const Options &options)
   active_ = CreateFrameCanvas();
   Clear();
   SetGPIO(io, true);
+  //ApplyStaticTransformer(RotateTransformer(270));
   // ApplyStaticTransformer(...);  // TODO: add 1:8 multiplex for outdoor panels
 }
 
@@ -393,6 +394,7 @@ void RGBMatrix::ApplyStaticTransformer(const CanvasTransformer &transformer) {
   shared_pixel_mapper_ = new_mapper;
 }
 
+
 // FrameCanvas implementation of Canvas
 FrameCanvas::~FrameCanvas() { delete frame_; }
 int FrameCanvas::width() const { return frame_->width(); }
@@ -416,3 +418,4 @@ void FrameCanvas::SetBrightness(uint8_t brightness) { frame_->SetBrightness(brig
 uint8_t FrameCanvas::brightness() { return frame_->brightness(); }
 
 }  // end namespace rgb_matrix
+

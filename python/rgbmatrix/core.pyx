@@ -49,6 +49,25 @@ cdef class FrameCanvas(Canvas):
     property pwmBits:
         def __get__(self): return (<cppinc.FrameCanvas*>self.__getCanvas()).pwmbits()
         def __set__(self, pwmBits): (<cppinc.FrameCanvas*>self.__getCanvas()).SetPWMBits(pwmBits)
+        
+
+cdef class CanvasTransformer:
+    def __dealloc__(self):
+        pass
+    
+    def __cinit__(self):
+        pass
+
+cdef class RotateTransformer(CanvasTransformer):
+    def __dealloc__(self):
+        pass
+    
+    def __cinit__(self, angle):
+        pass
+    
+    cdef cppinc.RotateTransformer* __getRotateTransformer(self) except *:
+        pass
+        
 
 
 cdef class RGBMatrix(Canvas):
@@ -87,6 +106,9 @@ cdef class RGBMatrix(Canvas):
 
     def SwapOnVSync(self, FrameCanvas newFrame):
         return __createFrameCanvas(self.__matrix.SwapOnVSync(newFrame.__canvas))
+    
+    def SetStaticRotation(self, degrees):
+        cppinc.apply_static_rotation(self.__matrix, degrees)
 
     property luminanceCorrect:
         def __get__(self): return self.__matrix.luminance_correct()

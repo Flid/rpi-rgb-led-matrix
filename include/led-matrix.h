@@ -229,6 +229,7 @@ public:
   //  manually use them to wrap canvases.)
   void ApplyStaticTransformer(const CanvasTransformer &transformer);
 
+
   // Don't use this function anymore, use ApplyStaticTransformer() instead.
   // See demo-main.cc how.
   //
