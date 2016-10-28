@@ -904,8 +904,7 @@ static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_6SetPixel(struct __pyx_obj
 static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_8Clear(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_10CreateFrameCanvas(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_12SwapOnVSync(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self, struct __pyx_obj_9rgbmatrix_4core_FrameCanvas *__pyx_v_newFrame); /* proto */
-static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_14SetStaticRotation(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self, PyObject *__pyx_v_degrees); /* proto */
-static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_16SetStaticRotation2(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_degrees); /* proto */
+static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_14SetStaticRotation2(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_degrees); /* proto */
 static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_16luminanceCorrect___get__(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self); /* proto */
 static int __pyx_pf_9rgbmatrix_4core_9RGBMatrix_16luminanceCorrect_2__set__(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self, PyObject *__pyx_v_luminanceCorrect); /* proto */
 static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_7pwmBits___get__(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self); /* proto */
@@ -3117,7 +3116,7 @@ static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_12SwapOnVSync(struct __pyx
  *     def SwapOnVSync(self, FrameCanvas newFrame):
  *         return __createFrameCanvas(self.__matrix.SwapOnVSync(newFrame.__canvas))             # <<<<<<<<<<<<<<
  * 
- *     def SetStaticRotation(self, degrees):
+ *     #def SetStaticRotation(self, degrees):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __pyx_f_9rgbmatrix_4core___createFrameCanvas(__pyx_v_self->__pyx___matrix->SwapOnVSync(__pyx_v_newFrame->__pyx___canvas)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -3145,68 +3144,8 @@ static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_12SwapOnVSync(struct __pyx
   return __pyx_r;
 }
 
-/* "rgbmatrix/core.pyx":104
- *         return __createFrameCanvas(self.__matrix.SwapOnVSync(newFrame.__canvas))
- * 
- *     def SetStaticRotation(self, degrees):             # <<<<<<<<<<<<<<
- *         cppinc.apply_static_rotation(self.__matrix, degrees)
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_9rgbmatrix_4core_9RGBMatrix_15SetStaticRotation(PyObject *__pyx_v_self, PyObject *__pyx_v_degrees); /*proto*/
-static PyObject *__pyx_pw_9rgbmatrix_4core_9RGBMatrix_15SetStaticRotation(PyObject *__pyx_v_self, PyObject *__pyx_v_degrees) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("SetStaticRotation (wrapper)", 0);
-  __pyx_r = __pyx_pf_9rgbmatrix_4core_9RGBMatrix_14SetStaticRotation(((struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *)__pyx_v_self), ((PyObject *)__pyx_v_degrees));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_14SetStaticRotation(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self, PyObject *__pyx_v_degrees) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("SetStaticRotation", 0);
-
-  /* "rgbmatrix/core.pyx":105
- * 
- *     def SetStaticRotation(self, degrees):
- *         cppinc.apply_static_rotation(self.__matrix, degrees)             # <<<<<<<<<<<<<<
- * 
- *     def SetStaticRotation2(self, degrees):
- */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_degrees); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  rgb_matrix::apply_static_rotation(__pyx_v_self->__pyx___matrix, __pyx_t_1);
-
-  /* "rgbmatrix/core.pyx":104
- *         return __createFrameCanvas(self.__matrix.SwapOnVSync(newFrame.__canvas))
- * 
- *     def SetStaticRotation(self, degrees):             # <<<<<<<<<<<<<<
- *         cppinc.apply_static_rotation(self.__matrix, degrees)
- * 
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("rgbmatrix.core.RGBMatrix.SetStaticRotation", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
 /* "rgbmatrix/core.pyx":107
- *         cppinc.apply_static_rotation(self.__matrix, degrees)
+ *     #    cppinc.apply_static_rotation(self.__matrix, degrees)
  * 
  *     def SetStaticRotation2(self, degrees):             # <<<<<<<<<<<<<<
  *         transformer = RotateTransformer()
@@ -3214,19 +3153,19 @@ static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_14SetStaticRotation(struct
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9rgbmatrix_4core_9RGBMatrix_17SetStaticRotation2(PyObject *__pyx_v_self, PyObject *__pyx_v_degrees); /*proto*/
-static PyObject *__pyx_pw_9rgbmatrix_4core_9RGBMatrix_17SetStaticRotation2(PyObject *__pyx_v_self, PyObject *__pyx_v_degrees) {
+static PyObject *__pyx_pw_9rgbmatrix_4core_9RGBMatrix_15SetStaticRotation2(PyObject *__pyx_v_self, PyObject *__pyx_v_degrees); /*proto*/
+static PyObject *__pyx_pw_9rgbmatrix_4core_9RGBMatrix_15SetStaticRotation2(PyObject *__pyx_v_self, PyObject *__pyx_v_degrees) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("SetStaticRotation2 (wrapper)", 0);
-  __pyx_r = __pyx_pf_9rgbmatrix_4core_9RGBMatrix_16SetStaticRotation2(((struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *)__pyx_v_self), ((PyObject *)__pyx_v_degrees));
+  __pyx_r = __pyx_pf_9rgbmatrix_4core_9RGBMatrix_14SetStaticRotation2(((struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *)__pyx_v_self), ((PyObject *)__pyx_v_degrees));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_16SetStaticRotation2(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_degrees) {
+static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_14SetStaticRotation2(struct __pyx_obj_9rgbmatrix_4core_RGBMatrix *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_degrees) {
   struct __pyx_obj_9rgbmatrix_4core_RotateTransformer *__pyx_v_transformer = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -3288,7 +3227,7 @@ static PyObject *__pyx_pf_9rgbmatrix_4core_9RGBMatrix_16SetStaticRotation2(struc
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "rgbmatrix/core.pyx":107
- *         cppinc.apply_static_rotation(self.__matrix, degrees)
+ *     #    cppinc.apply_static_rotation(self.__matrix, degrees)
  * 
  *     def SetStaticRotation2(self, degrees):             # <<<<<<<<<<<<<<
  *         transformer = RotateTransformer()
@@ -4041,8 +3980,7 @@ static PyMethodDef __pyx_methods_9rgbmatrix_4core_RGBMatrix[] = {
   {"Clear", (PyCFunction)__pyx_pw_9rgbmatrix_4core_9RGBMatrix_9Clear, METH_NOARGS, 0},
   {"CreateFrameCanvas", (PyCFunction)__pyx_pw_9rgbmatrix_4core_9RGBMatrix_11CreateFrameCanvas, METH_NOARGS, 0},
   {"SwapOnVSync", (PyCFunction)__pyx_pw_9rgbmatrix_4core_9RGBMatrix_13SwapOnVSync, METH_O, 0},
-  {"SetStaticRotation", (PyCFunction)__pyx_pw_9rgbmatrix_4core_9RGBMatrix_15SetStaticRotation, METH_O, 0},
-  {"SetStaticRotation2", (PyCFunction)__pyx_pw_9rgbmatrix_4core_9RGBMatrix_17SetStaticRotation2, METH_O, 0},
+  {"SetStaticRotation2", (PyCFunction)__pyx_pw_9rgbmatrix_4core_9RGBMatrix_15SetStaticRotation2, METH_O, 0},
   {0, 0, 0, 0}
 };
 

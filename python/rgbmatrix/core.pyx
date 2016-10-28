@@ -101,8 +101,8 @@ cdef class RGBMatrix(Canvas):
     def SwapOnVSync(self, FrameCanvas newFrame):
         return __createFrameCanvas(self.__matrix.SwapOnVSync(newFrame.__canvas))
     
-    def SetStaticRotation(self, degrees):
-        cppinc.apply_static_rotation(self.__matrix, degrees)
+    #def SetStaticRotation(self, degrees):
+    #    cppinc.apply_static_rotation(self.__matrix, degrees)
     
     def SetStaticRotation2(self, degrees):
         transformer = RotateTransformer()
