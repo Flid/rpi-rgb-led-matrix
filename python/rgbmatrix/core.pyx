@@ -52,21 +52,15 @@ cdef class FrameCanvas(Canvas):
         
 
 cdef class CanvasTransformer:
-    def __dealloc__(self):
-        pass
+    pass
     
-    def __cinit__(self):
-        pass
 
 cdef class RotateTransformer(CanvasTransformer):
     def __dealloc__(self):
-        pass
+        del self.__rotate_transformer
     
     def __cinit__(self, angle):
-        pass
-    
-    cdef cppinc.RotateTransformer* __getRotateTransformer(self) except *:
-        pass
+        self.__rotate_transformer = new cppinc.RotateTransformer(angle)
         
 
 
@@ -109,6 +103,10 @@ cdef class RGBMatrix(Canvas):
     
     def SetStaticRotation(self, degrees):
         cppinc.apply_static_rotation(self.__matrix, degrees)
+    
+    def SetStaticRotation2(self, degrees):
+        transformer = RotateTransformer()
+        self.ApplyStaticTransformer(transformer)
 
     property luminanceCorrect:
         def __get__(self): return self.__matrix.luminance_correct()

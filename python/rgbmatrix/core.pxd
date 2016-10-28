@@ -10,6 +10,15 @@ cdef class RGBMatrix(Canvas):
     cdef cppinc.RGBMatrix *__matrix
     cdef cppinc.GPIO *__gpio
 
+    
+cdef class CanvasTransformer:
+    cdef cppinc.CanvasTransformer *__transformer
+    
+    
+cdef class RotateTransformer(CanvasTransformer):
+    cdef cppinc.RotateTransformer *__rotate_transformer
+    
+
 # Local Variables:
 # mode: python
 # End:
